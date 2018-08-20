@@ -10,7 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Shared\" />
+    <Folder Include="ClientApp\components\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 

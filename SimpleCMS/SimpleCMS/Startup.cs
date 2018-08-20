@@ -98,6 +98,8 @@ namespace SimpleCMS
                 };
             });
 
+            services.AddHttpContextAccessor();
+
             // configure jwt authentication
             var appSettings = appSettingsSection.Get<AppSettings>();
             var key = Encoding.ASCII.GetBytes(appSettings.Secret);
@@ -136,6 +138,8 @@ namespace SimpleCMS
 
             // configure DI for application services
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IPagesService, PagesService>();
+            services.AddScoped<IPostsService, PostsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

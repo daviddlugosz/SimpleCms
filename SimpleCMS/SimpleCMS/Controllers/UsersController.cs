@@ -16,7 +16,7 @@ namespace SimpleCMS.Controllers
 {
     [Authorize]
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     public class UsersController : ControllerBase
     {
         private IUserService _userService;

@@ -3,3 +3,10 @@
 ################################################################################
 
 /SimpleCMS/.vs
+/SimpleCMS/DataDomain/bin/Debug/netcoreapp2.1
+/SimpleCMS/SimpleCMS/node_modules
+/SimpleCMS/SimpleCMS/obj
+/SimpleCMS/DataLogic/bin/Debug/netcoreapp2.1
+/SimpleCMS/DataLogic/obj
+/SimpleCMS/DataDomain/obj
+/SimpleCMS/SimpleCMS/bin/Debug/netcoreapp2.1
