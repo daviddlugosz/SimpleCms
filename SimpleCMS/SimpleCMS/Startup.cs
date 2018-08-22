@@ -23,10 +23,12 @@ namespace SimpleCMS
     public class Startup
     {
         public IConfiguration Configuration { get; }
+        public IHostingEnvironment Environment { get; }
 
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IHostingEnvironment environment)
         {
             Configuration = configuration;
+            Environment = environment;
 
             Log.Logger = new LoggerConfiguration()
                 .ReadFrom.Configuration(configuration)
@@ -76,8 +78,6 @@ namespace SimpleCMS
                 });
                 c.AddSecurityRequirement(security);
 
-                
-
                 // Set the comments path for the Swagger JSON and UI.
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
@@ -115,8 +115,8 @@ namespace SimpleCMS
                     OnTokenValidated = context =>
                     {
                         var userService = context.HttpContext.RequestServices.GetRequiredService<IUserService>();
-                        var userId = int.Parse(context.Principal.Identity.Name);
-                        var user = userService.GetById(userId);
+                        var userName = context.Principal.Identity.Name;
+                        var user = userService.GetByUserName(userName);
                         if (user == null)
                         {
                             // return unauthorized if user no longer exists
@@ -140,6 +140,9 @@ namespace SimpleCMS
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IPagesService, PagesService>();
             services.AddScoped<IPostsService, PostsService>();
+
+            services.AddSingleton(Environment);
+            services.AddScoped<IImageObjectsService, ImageObjectsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

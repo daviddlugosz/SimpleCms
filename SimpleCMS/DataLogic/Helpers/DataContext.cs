@@ -11,6 +11,7 @@ namespace DataLogic.Helpers
         public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<Page> Pages { get; set; }
         public DbSet<Post> Posts { get; set; }
+        public DbSet<ImageObject> ImageObjects { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

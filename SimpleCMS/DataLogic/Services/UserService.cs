@@ -230,5 +230,17 @@ namespace DataLogic.Services
             return user;
 
         }
+
+        public User GetByUserName(string userName)
+        {
+            var user = _context.Users
+                 .Include(u => u.UserRole)
+                 .FirstOrDefault(u => u.UserName == userName);
+
+            if (user == null)
+                throw new AppException("User not found");
+
+            return user;
+        }
     }
 }
