@@ -7,7 +7,7 @@ namespace DataLogic.Helpers
 {
     public static class GenericMapper
     {
-        private static string[] propertiesToExclude = { "password" };
+        private static string[] propertiesToExclude = { "password", "author" };
 
         // TODO: Use custom attribute for exluded properties
         public static T MapObject<T>(object inputObject) where T : new()

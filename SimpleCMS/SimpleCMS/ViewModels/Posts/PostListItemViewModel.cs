@@ -1,5 +1,4 @@
-﻿using DataDomain.DbEntities;
-using SimpleCms.ViewModels.Pages;
+﻿using SimpleCms.ViewModels.Pages;
 
 namespace SimpleCms.ViewModels.Posts
 {
@@ -7,6 +6,6 @@ namespace SimpleCms.ViewModels.Posts
     {
         public string Description { get; set; }
         public string CoverImagePath { get; set; }
-        public User Author { get; set; }
+        public LoginViewModel Author { get; set; }
     }
 }

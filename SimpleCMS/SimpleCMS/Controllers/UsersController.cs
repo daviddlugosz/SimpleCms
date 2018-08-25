@@ -31,7 +31,7 @@ namespace SimpleCMS.Controllers
         }
 
         [AllowAnonymous]
-        [HttpPost("authenticate")]
+        [HttpPost]
         public IActionResult Authenticate([FromBody]LoginViewModel model)
         {
             var user = _userService.Authenticate(model.UserName, model.Password);
@@ -63,7 +63,7 @@ namespace SimpleCMS.Controllers
         }
 
         [AllowAnonymous]
-        [HttpPost("register")]
+        [HttpPost]
         public IActionResult Register([FromBody]FullUserViewModel model)
         {
             // map dto to entity
@@ -83,7 +83,7 @@ namespace SimpleCMS.Controllers
         }
 
         [Authorize(Roles = "admin")]
-        [HttpPost("CreateAdminUser")]
+        [HttpPost]
         public IActionResult CreateAdminUser([FromBody]FullUserViewModel model)
         {
             // map dto to entity
@@ -102,7 +102,7 @@ namespace SimpleCMS.Controllers
             }
         }
 
-        [HttpGet("getall")]
+        [HttpGet]
         public IActionResult GetAll()
         {
             var users = _userService.GetAll();
